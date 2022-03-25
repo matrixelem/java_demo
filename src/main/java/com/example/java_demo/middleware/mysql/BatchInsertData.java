@@ -25,6 +25,10 @@ public class BatchInsertData {
         }
     }
 
+    /**
+     * 普通批量插入写法
+     * @throws Exception
+     */
     public static void batchInsert() throws Exception {
         //共掺入的数据总量
         int total = 1000000;
@@ -73,7 +77,7 @@ public class BatchInsertData {
 
 
     /**
-     * 使用数据库函数插入
+     * 使用数据库自带函数计算某些字段的批量插入写法
      * @throws Exception
      */
     public static void batchInsert1() throws Exception {
