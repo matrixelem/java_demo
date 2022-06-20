@@ -15,7 +15,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ClickHouseTest {
+public class ClickHouseJdbcStructureTest {
 
     public static void main(String[] args) throws Exception {
 
@@ -25,7 +25,7 @@ public class ClickHouseTest {
         int total = 10000000;
 //        new ClickHouseTest().singleInsert(total, url);
 //        new ClickHouseTest().batchInsert(total, url);
-         new ClickHouseTest().poolQuery(url);
+         new ClickHouseJdbcStructureTest().poolQuery(url);
         System.out.println("结束：" + new Date().toString());
 
     }
