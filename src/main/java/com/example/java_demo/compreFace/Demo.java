@@ -30,17 +30,15 @@ public class Demo {
                         .addFormDataPart("file", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file))
                         .build();
                 Request request = new Request.Builder()
-                        .addHeader("x-api-key", "604ca66c-c159-42d2-a409-5d7e24c002d3")
-                        .url("http://10.171.2.180:8000/api/v1/recognition/recognize")
+                        .addHeader("x-api-key", "870a4dcb-ed91-4aa9-a3ad-c0fe987bc94f")
+                            .url("http://10.171.2.180:8000/api/v1/recognition/recognize")
                         .post(requestBody)
                         .build();
                 long s1 = System.currentTimeMillis();
                 Response response = client.newCall(request).execute();
                 long s2 = System.currentTimeMillis();
-                System.out.println("time:" +(s2-s1));
                 if (response.isSuccessful()){
-                    Body body = JSON.parseObject(response.body().string(), Body.class);
-                    System.out.println(path.getFileName() + ":" + body.subjects);
+                    System.out.println(response.body().string());
                 }
                 return FileVisitResult.CONTINUE;
             }
@@ -50,6 +48,29 @@ public class Demo {
 
     @Data
     static class Body {
-        private List<String> subjects;
+        private Result result;
     }
+
+    @Data
+    static class Result {
+        private Box box;
+        private List<Subject> subjects;
+    }
+
+    @Data
+    static class Box {
+        private double probability;
+        private int x_max;
+        private int y_max;
+        private int x_min;
+        private int y_min;
+    }
+
+    @Data
+    static class Subject {
+        private String subject;
+        private double similarity;
+    }
+
+
 }
